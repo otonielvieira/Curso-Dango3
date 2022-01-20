@@ -1,0 +1,65 @@
+#workflow para Django
+
+#entrar
+
+#criar a pasta do projeto
+#entrar na pasta via Powershel
+
+#cria o virtual env
+python - m venv venv 
+
+#usando shell  #ativa a virtualenv (esse é usando Powershell)
+./venv/Scripts/activate.ps1 
+
+# Instalar o Django : (via terminal Poweshell)
+pip install Django (conforme manual doc oficial verificar)
+
+# Importar o Django
+import django
+django.VERSION
+exit() # para sair do python interpreter
+
+# Criar a pasta do projeto django
+django-admin startproject blog #via shell blog é o nome do projeto
+ 
+#verificar se esta rodando
+ 1 navegar para a pasta do projeto
+ # cd blog
+2 digitar o comando abaixo pra rodar o servidor:
+python manage.py runserver
+
+# Para parar o servidor:
+crtl + c
+
+# Criar automaticamente as tabelas padrao que vem com banco de dados
+python manage.py migrate
+
+# Criar um super usuario (administrador)
+python mamage.py createsuperuser
+
+Senha criada #%15773571aW
+
+
+####### CRIANDO A PRIMEIRA URL #########
+# para criar uma url para minha pagina, entrar no arquivo url na pasta blog e criar um novo path com o endereço(url) e o nome que vai ser criado na função dentro da view
+
+##### CRIANDO A PRIMEIRA VIEW ######
+# na pasta blog criar um novo arquivo.py chamado views,
+dentro da viw importar (from django.http import HttpResponse) consultar sempre a documentação.
+dentro da view criar uma função com o nome que foi passado lá na url no arquivo urls.py
+
+####### CRIANDO O PRIMEIRO MODEL ###########
+a model é um modelo do que vai ter no banco de dados.  ela recebe o que vem da view faz a consulta ao bd e disponibiliza para o template que sera o proximo topico. 
+#para criar o model: python manage.py startapp website  (esse comando cria um app com o nome website ou o nome que quiser. vai aparecer uma pasta nova com uma estrutura de projeto. essa é a nossa aplicação que vamos utilizar)
+
+1 ir no settins da pasta blog e registrar o nosso app (o nome da app foi website). para registrar basta ir em Installed apps e adicionar o nome 'website',
+
+2 criar o model: 
+ir no arquivo models na pasta website e criar a classe (no nosso ex criamos a classe posts)
+3 apos criar o modelo, ir no terminal e digitar: python manage.py makemigrations
+4 python manage.py migrate (aplica o modelo e cria dentro do banco de dados)
+
+# registra o model criado no admin para que ele apareça no admin do site
+para registra:
+1 ir no admin.py dentro do website e digitar: from .models import Post (post e o nome do modelo que criamos)
+2 digitar admin.site.register(Posts)  (posts e o nome do model)
