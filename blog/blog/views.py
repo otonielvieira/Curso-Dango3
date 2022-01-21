@@ -1,7 +1,4 @@
 from django.http import HttpResponse
-import datetime
-
-date = datetime.date
 
 def home(request):
     html ='''<html>
