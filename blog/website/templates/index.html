@@ -4,10 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>WebsiteDjango</title>
   </head>
   <body>
     <h1>First Django Html Template created!</h1>
     <h2>The development is starting!!</h2>
+    {{ name }}<br>
+
+    <ul>
+       {% for item in lista_tecnologias %}
+        <li>
+          {{ item }}
+        </li>
+    {% endfor %}
+      </ul>
+
+    <ul>
+       {% for post in result %}
+        <h2>{{ post.title }}</h2>
+        <h3>{{ post.sub_title }}</h3>
+        <p>{{ post.content }}</p>
+    {% endfor %}
+      </ul>
+
+    
   </body>
 </html>
