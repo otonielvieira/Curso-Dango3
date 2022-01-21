@@ -21,7 +21,7 @@ exit() # para sair do python interpreter
 
 # Criar a pasta do projeto django
 django-admin startproject blog #via shell blog é o nome do projeto
- 
+
 #verificar se esta rodando
  1 navegar para a pasta do projeto
  # cd blog
@@ -41,7 +41,7 @@ Senha criada #%15773571aW
 
 
 ####### CRIANDO A PRIMEIRA URL #########
-# para criar uma url para minha pagina, entrar no arquivo url na pasta blog e criar um novo path com o endereço(url) e o nome que vai ser criado na função dentro da view
+# para criar uma url para minha pagina, entrar no arquivo url na pasta blog e criar um novo path com o endereço(url) e o nome que vai ser criado na função dentro da view   fazer o import assim: from .view import 'nome da funcao criada na view)
 
 ##### CRIANDO A PRIMEIRA VIEW ######
 # na pasta blog criar um novo arquivo.py chamado views,
@@ -62,19 +62,38 @@ ir no arquivo models na pasta website e criar a classe (no nosso ex criamos a cl
 # registra o model criado no admin para que ele apareça no admin do site
 para registra:
 1 ir no admin.py dentro do website e digitar: from .models import Post (post e o nome do modelo que criamos)
-2 digitar admin.site.register(Posts)  (posts e o nome do model)
+2 digitar admin.site.register(Posts)  (posts e o nome do model
+
+#colocando no git e github
+git init
+git status
+criar o arquivo .gitignore e colocar nele o nome do que não é para ser versionado
 
 
-##### VERSIONAR O PROJETO E COLOCAR NO GITHUB ######
 
-obs: criar um arquivo .gitignore e dentro dele colocar o nome dos arquivos que não vão subir
-1 acessar a pasta principal via Powershell
-2 git init
-3 git add .
-4 git commit -m 'First commit, My First Django Project'
-5 git status
+########## Criando primeiro template #########
 
-eviar para o GITHUB
-1 criar o repositorio online
-2 git remote add origin https://github.com/otonielvieira/Curso-Dango3.git
-3 git push -u origin master (obs o -u so usar na primeira vez que subir o codigo)
+ir no arquivo urls.py da pasta blog superprojeto e 
+importar o 'include'
+
+2 criar o path da url que vai vir do website que é nossa app
+assim : path('site',include('website.urls')),
+
+3 ir no website e criar um arquivo urls.py
+
+4 copiar a sintaxe do arquivo urls.py que ja tinha na pasta blog   e colar no urls.py que criamos no website
+
+5 limpar o arquivo deixando somente o 'from django.urls import path, include' e 'from .views import site'
+
+6 o path deixar: urlpatterns = [
+    path('/', site)),
+    
+]
+7 ir na views do website e criar a funcao site,  obs importar o 'from django.http import HttpResponse, include'
+
+8 na views importar o 'render'
+
+9 - ajustar a função para:  def site(request):
+    return render(request, 'index.html')  # o index.html vai ser criado 
+
+10  . criar dentro de website a pasta templates e dentro dela criar o index.html
