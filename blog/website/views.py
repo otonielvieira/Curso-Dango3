@@ -9,3 +9,8 @@ data = {'name': 'Curso de Django, Renderizando Templates', 'lista_tecnologias': 
 
 def site(request):
     return render(request, 'index.html', data)
+
+
+def post_detail(request, id):
+    post = Posts.objects.get(id=id)
+    return render(request, 'post_detail.html', {'post': post})

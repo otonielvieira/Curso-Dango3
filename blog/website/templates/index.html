@@ -42,7 +42,7 @@
           Otoniel de A. Vieira. Desenvolvedor web Jr.<br />
           Formação superior em Gestão da Tecnologia da Informação.<br />
           Arquiteto Cloud Computing<br />
-          Analista de Dados co Python.<br />
+          Analista de Dados com Python.<br />
           Desenvolverdor Python.
         </p>
         <ul class="actions">
@@ -59,13 +59,27 @@
         <div class="row">
           {% for post in posts %}
           <article class="col-6 col-12-xsmall work-item">
+            {% if post.imagem %}
+            <img
+              src="{{ post.imagem.url }}"
+              alt="imagem post"
+              width="370px"
+              height="270px"
+            />
+            {% else %}
             <a href="{% static 'images/fulls/01.jpg' %}" class="image fit thumb"
               ><img src="{% static 'images/thumbs/01.jpg' %}" alt=""
             /></a>
+            {% endif %}
             <h2>{{ post.title }}</h2>
             <h3>{{ post.sub_title }}</h3>
             <p>{{post.content }}</p>
             <span>Categoria: {{ post.get_categories_display }}</span>
+            <ul class="actions">
+              <li>
+                <a href="{% url 'post_detail' post.id %}" class="button">Saiba Mais</a>
+              </li>
+            </ul>
           </article>
           {% endfor %}
         </div>

@@ -1,3 +1,5 @@
+from distutils.command.upload import upload
+from email.mime import image
 from django.db import models
 
 # Create your models here.
@@ -17,6 +19,7 @@ class Posts(models.Model):
         default=Categorias.GR,
     )
     deleted = models.BooleanField(default=True)
+    imagem = models.ImageField(upload_to='posts', null=True, blank=True)
 
 
 #essa função define o titulo no admin
