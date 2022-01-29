@@ -34,7 +34,13 @@
           <h4>{{ post.sub_title }}</h4>
         </header>
         <p>{{ post.content }}</p>
-        <img src="{{ post.imagem.url }}" alt="" />
+        {% if post.imagem %}
+        <img src="{{ post.imagem.url }}" alt="imagem post" width="370px" height="270px" />
+        {% else %}
+        <a href="{% static 'images/fulls/01.jpg' %}" class="image fit thumb"
+          ><img src="{% static 'images/thumbs/01.jpg' %}" alt="imagem"
+        /></a>
+        {% endif %}
         <ul class="actions">
           <li>
             <a href="{% url 'home_site' %}" class="button">Voltar</a>

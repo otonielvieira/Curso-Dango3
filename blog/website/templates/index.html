@@ -68,13 +68,13 @@
             />
             {% else %}
             <a href="{% static 'images/fulls/01.jpg' %}" class="image fit thumb"
-              ><img src="{% static 'images/thumbs/01.jpg' %}" alt=""
+              ><img src="{% static 'images/thumbs/01.jpg' %}" alt="imagem"
             /></a>
             {% endif %}
             <h2>{{ post.title }}</h2>
             <h3>{{ post.sub_title }}</h3>
             <p>{{post.content }}</p>
-            <span>Categoria: {{ post.get_categories_display }}</span>
+            <span>Categoria: {{ post.get_categories_label }}</span>
             <ul class="actions">
               <li>
                 <a href="{% url 'post_detail' post.id %}" class="button">Saiba Mais</a>
