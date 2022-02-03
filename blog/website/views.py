@@ -1,6 +1,8 @@
+from unicodedata import name
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Posts
+from .models import Contato
 
 # Create your views here.
 list_posts = Posts.objects.all()
@@ -14,3 +16,13 @@ def site(request):
 def post_detail(request, id):
     post = Posts.objects.get(id=id)
     return render(request, 'post_detail.html', {'post': post})
+
+
+def save_form(request):
+    name=request.POST['name']
+    Contato.objects.create(
+        name=name,
+        email=request.POST['email'],
+        message=request.POST['message'],
+         )
+    return render(request,'contato.html', {'name_contato': name})

@@ -9,6 +9,13 @@ class Categorias(models.TextChoices):
     GR = 'GR', 'Geral'
     OT = 'OT', 'Outros'
 
+class Contato(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    message = models.TextField()
+    def __str__(self):
+            return self.name
+
 class Posts(models.Model):
     title = models.CharField(max_length=100)
     sub_title = models.CharField(max_length=200)
